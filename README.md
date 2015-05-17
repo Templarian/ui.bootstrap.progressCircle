@@ -9,7 +9,7 @@ $scope.progress = 0.8;
 ```
 
 ```html
-<circle-progress ng-model="progress"></circle-progress>
+<progress-circle ng-model="progress"></progress-circle>
 ```
 
 | Property  | Description     | Required | Default |
