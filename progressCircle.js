@@ -10,7 +10,6 @@ angular.module('ui.bootstrap.progressCircle', [])
       	var value = 0;
       	var min = 0;
       	var max = 100;
-      	var offset = 270;
       	var total = 0;
       	var svg = null;
       	var path = null;
@@ -70,9 +69,10 @@ angular.module('ui.bootstrap.progressCircle', [])
                 updateSize();
                 updatePath();
             });
-          	$scope.$watch(attrs.offset, function (newValue) {
-              	if (typeof newValue == 'undefined') { return; }
-              	offset = newValue;
+          	$scope.$watch(attrs.offset, function (offset) {
+              	offset = offset || 90;
+                var half = Math.floor(size / 2);
+              	path.setAttribute('transform', 'rotate(' + offset + ' ' + half + ' ' + half + ')');
                 updateSize();
             });
         };
