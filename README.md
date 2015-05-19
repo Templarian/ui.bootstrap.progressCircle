@@ -28,7 +28,7 @@ Style the bar by assigning a class or globally with the `progress-circle` class.
 }
 ```
 
-## Variant
+## Variant for a Solid Object
 
 If a solid is needed instead of a path the code below will solve that. This version required a little trigonometry, which I have not done since high school so it might be a bit rough.
 
