@@ -1,4 +1,4 @@
-# ui.bootstrap.progresscircle
+# ui.bootstrap.progressCircle
 
 Circular progress bar for AngularJS Bootstrap.
 
