@@ -27,3 +27,9 @@ Style the bar by assigning a class or globally with the `progress-circle` class.
     fill: #29B6F6;
 }
 ```
+
+## Variant
+
+If a solid is needed instead of a path the code below will solve that. This version required a little trigonometry, which I have not done since high school so it might be a bit rough.
+
+[Demo](http://codepen.io/templarian/pen/OVXmqR)
