@@ -10,6 +10,7 @@ angular.module('ui.bootstrap.progressCircle', [])
       	var value = 0;
       	var min = 0;
       	var max = 100;
+      	var offset = 90;
       	var total = 0;
       	var svg = null;
       	var path = null;
@@ -22,14 +23,15 @@ angular.module('ui.bootstrap.progressCircle', [])
           	size = half * 2;
             svg.style.width = size + 'px';
             svg.style.height = size + 'px';
-          	var halfhalf = Math.floor(half / 2);
+          	var quarter = Math.floor(half / 2);
           	var halfThickness = Math.ceil(thickness / 2);
           	path.setAttribute('d',
                               'M' + halfThickness + ',' + half
-                            + 'A' + halfhalf + ',' + halfhalf + ' 0 0,1 ' + (size - halfThickness) + ',' + half
-                            + 'A' + halfhalf + ',' + halfhalf + ' 0 0,1 ' + halfThickness + ',' + half);
+                            + 'A' + quarter + ',' + quarter + ' 0 0,1 ' + (size - halfThickness) + ',' + half
+                            + 'A' + quarter + ',' + quarter + ' 0 0,1 ' + halfThickness + ',' + half);
           	total = path.getTotalLength();
           	path.setAttribute('stroke-dasharray', total + ' ' + total);
+          	path.setAttribute('transform', 'rotate(' + offset + ' ' + half + ' ' + half + ')');
         }
         return function ($scope, element, attrs) {
             svg = create('svg');
@@ -40,39 +42,32 @@ angular.module('ui.bootstrap.progressCircle', [])
             svg.appendChild(path);
             element.replaceWith(svg);
             $scope.$watch(attrs.ngModel, function (newValue) {
-              	if (typeof newValue == 'undefined') { return; }
-              	value = newValue;
+              	value = newValue || 0;
                 updatePath();
             });
-            $scope.$watch(attrs.size, function (newValue) {
-              	if (typeof newValue == 'undefined') { return; }
-              	size = newValue;
+            $scope.$watch(attrs.size, function (sizeValue) {
+              	size = sizeValue || 100;
               	svg.style.width = size + 'px';
             		svg.style.height = size + 'px';
                 updateSize();
               	updatePath();
             });
-          	$scope.$watch(attrs.min, function (newValue) {
-              	if (typeof newValue == 'undefined') { return; }
-              	min = newValue;
+          	$scope.$watch(attrs.min, function (minValue) {
+              	min = minValue || 0;
                 updatePath();
             });
-          	$scope.$watch(attrs.max, function (newValue) {
-              	if (typeof newValue == 'undefined') { return; }
-              	max = newValue;
+          	$scope.$watch(attrs.max, function (maxValue) {
+              	max = maxValue || 1;
                 updatePath();
             });
-            $scope.$watch(attrs.thickness, function (newValue) {
-              	if (typeof newValue == 'undefined') { return; }
-              	thickness = newValue;
+            $scope.$watch(attrs.thickness, function (thicknessValue) {
+              	thickness = thicknessValue || 10;
               	path.setAttribute('stroke-width', thickness);
                 updateSize();
                 updatePath();
             });
-          	$scope.$watch(attrs.offset, function (offset) {
-              	offset = offset || 90;
-                var half = Math.floor(size / 2);
-              	path.setAttribute('transform', 'rotate(' + offset + ' ' + half + ' ' + half + ')');
+          	$scope.$watch(attrs.offset, function (offsetValue) {
+              	offset = offsetValue || 90;
                 updateSize();
             });
         };
