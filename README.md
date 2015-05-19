@@ -12,13 +12,13 @@ $scope.progress = 0.8;
 <progress-circle ng-model="progress"></progress-circle>
 ```
 
-| Property  | Description     | Required | Default |
-|-----------|-----------------|----------|---------|
-| ngModel   | [min] to [max]  | true     |         |
-| min       | 0               | false    | 0       |
-| max       | 1               | false    | 1       |
-| thickness | Thickness bar   | false    | 10      |
-| offset    | Degree offset, starting at the left middle going clockwise. | false | 90 |
+| Attribute  | Description     | Required | Default |
+|------------|-----------------|----------|---------|
+| ngModel    | [min] to [max]  | true     |         |
+| min        | 0               | false    | 0       |
+| max        | 1               | false    | 1       |
+| thickness  | Thickness bar   | false    | 10      |
+| offset     | Degree offset, starting at the left middle going clockwise. | false | 90 |
 
 Style the bar by assigning a class or globally with the `progress-circle` class.
 
